@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
 
     public Text titleText;
@@ -23,11 +24,18 @@ public class MenuController : MonoBehaviour {
     public void StartGame()
     {
         loadText.text = "Loading . . .";
+        StartCoroutine(LoadScene());
+    }
+
+    IEnumerator LoadScene()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        SceneManager.LoadScene("GlitchHouse");
     }
 
     public void QuitGame()
     {
-
+        Application.Quit();
     }
 
 }
