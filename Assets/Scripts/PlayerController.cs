@@ -12,18 +12,21 @@ public class PlayerController : MonoBehaviour
     public float maxPitch;
     public float minPitch;
 
-
     private Vector3 jump;
     private float nextJump = 0;
     private float yaw = -16.0f;
     private float pitch = 0.0f;
     private Rigidbody rb;
 
+    public Camera mainCamera;
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
+
+        mainCamera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -42,9 +45,25 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        RaycastHit hit;
+        Vector3 f = mainCamera.transform.forward;
+
+        Debug.DrawRay(transform.position, f, Color.blue);
+
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            Debug.Log("RaycastHit!");
+        }
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             Debug.Log("Interacting");
+            if (hit.collider.tag == "Door" && (Input.GetKeyDown(KeyCode.E)))
+            {
+                bool rigid = hit.collider.attachedRigidbody.isKinematic;
+                hit.collider.attachedRigidbody.isKinematic = !rigid;
+            }
         }
     }
 
