@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: fbc043b7e375102409022afaaadf3488
+  - enabled: 1
+    path: Assets/Scenes/GlitchHouse.unity
+    guid: b4fd17da37e0e7a48ad02fbc6377d0b6
