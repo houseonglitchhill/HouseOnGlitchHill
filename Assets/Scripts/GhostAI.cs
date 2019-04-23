@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class GhostAI : MonoBehaviour {
     private NavMeshAgent agent;
     public GameObject Player, OrbOne, OrbTwo, OrbThree;
+    private GhostOrbController orbControllOne, orbControllTwo, orbControllThree;
     private Transform target;
     private float distanceToTarget, coolOffTimer;
     public bool engaging;
@@ -21,23 +22,34 @@ public class GhostAI : MonoBehaviour {
         }
         agent = GetComponent<NavMeshAgent>();
         engaging = true;
+        orbControllOne = OrbOne.GetComponent<GhostOrbController>();
+        orbControllTwo = OrbTwo.GetComponent<GhostOrbController>();
+        orbControllThree = OrbThree.GetComponent<GhostOrbController>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (engaging) {
             agent.isStopped = false;
-            OrbOne.GetComponent<GhostOrbController>().baseColor = Color.red;
-            OrbThree.GetComponent<GhostOrbController>().baseColor = Color.red;
-            OrbTwo.GetComponent<GhostOrbController>().baseColor = Color.red;
+            orbControllOne.baseColor = Color.red;
+            orbControllTwo.baseColor = Color.red;
+            orbControllThree.baseColor = Color.red;
+            orbControllOne.SetSpeed("High");
+            orbControllTwo.SetSpeed("High");
+            orbControllThree.SetSpeed("High");
+
+
         }
         else {
             coolOffTimer += Time.deltaTime;
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
-            OrbOne.GetComponent<GhostOrbController>().baseColor = Color.white;
-            OrbThree.GetComponent<GhostOrbController>().baseColor = Color.white;
-            OrbTwo.GetComponent<GhostOrbController>().baseColor = Color.white;
+            orbControllOne.baseColor = Color.white;
+            orbControllTwo.baseColor = Color.white;
+            orbControllThree.baseColor = Color.white;
+            orbControllOne.SetSpeed("Low");
+            orbControllTwo.SetSpeed("Low");
+            orbControllThree.SetSpeed("Low");
         }
         agent.SetDestination(target.position);
         distanceToTarget = Vector3.Distance(target.position, transform.position);
