@@ -61,8 +61,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interacting");
             if (hit.collider.tag == "Door" && (Input.GetKeyDown(KeyCode.E)))
             {
-                bool rigid = hit.collider.attachedRigidbody.isKinematic;
-                hit.collider.attachedRigidbody.isKinematic = !rigid;
+                //bool rigid = hit.collider.attachedRigidbody.isKinematic;
+                //hit.collider.attachedRigidbody.isKinematic = !rigid;
+                hit.collider.attachedRigidbody.AddForce(new Vector3(0,0,1f), ForceMode.Impulse);
             }
         }
     }
