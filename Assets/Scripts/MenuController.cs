@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
 
-    public Text titleText;
+    //public Text titleText;
     public Button startButton;
     public Button quitButton;
     public Text loadText;
@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         //set text fields
-        titleText.text = "House on Glitch Hill";
+        //titleText.text = "House on Glitch Hill";
         loadText.text = "";
 
         //create on listeners for buttons
