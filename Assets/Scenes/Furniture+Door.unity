@@ -1973,6 +1973,7 @@ GameObject:
   - component: {fileID: 951404761}
   - component: {fileID: 951404765}
   - component: {fileID: 951404766}
+  - component: {fileID: 951404767}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -2041,7 +2042,7 @@ Transform:
   m_GameObject: {fileID: 951404760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 3, z: 0.125}
+  m_LocalScale: {x: 1.495, y: 3, z: 0.125}
   m_Children:
   - {fileID: 75541303}
   m_Father: {fileID: 1403692219}
@@ -2072,7 +2073,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.5, y: 0.00033333336, z: 0}
+  m_ConnectedAnchor: {x: -0.51, y: 0.00033333336, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -2096,6 +2097,18 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &951404767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951404760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8ef92cea712ee48aad5a75541f64c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hinge: {fileID: 0}
 --- !u!1001 &965578776
 Prefab:
   m_ObjectHideFlags: 0
