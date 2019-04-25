@@ -17,7 +17,7 @@ public class Door : MonoBehaviour {
 
         hinge.useSpring = true;
         joint = hinge.spring;
-        joint.spring = 10;
+        joint.spring = 8;
         joint.damper = 3;
 
         open = false;
