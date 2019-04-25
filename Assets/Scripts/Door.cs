@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour {
-
+    // door hinge
     public HingeJoint hinge;
 
+    // for swinging door open and closed
     private JointSpring joint;
     private Rigidbody rb;
     private bool open;
