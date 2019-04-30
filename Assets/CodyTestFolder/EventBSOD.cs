@@ -22,7 +22,7 @@ public class EventBSOD : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         toggleBSOD();
         Time.timeScale = 1f;
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     private void toggleBSOD()
