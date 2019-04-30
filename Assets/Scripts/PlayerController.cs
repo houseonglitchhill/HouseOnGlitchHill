@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            Debug.Log("Interacting");
+            //Debug.Log("Interacting");
             if (hit.collider.tag == "Door" && (Input.GetKeyDown(KeyCode.E)))
             {
                 hit.collider.GetComponent<Door>().OpenOrCloseDoor();
