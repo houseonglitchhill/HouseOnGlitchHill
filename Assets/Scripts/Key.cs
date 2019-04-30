@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Key : MonoBehaviour {
-    const int numOfKey;
+    const int numOfKey = 1;
 
     void OnTriggerEnter(Collider other)
     {
