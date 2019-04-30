@@ -30,20 +30,25 @@ public class Door : MonoBehaviour {
         if (open)
         {   // open door
             joint.targetPosition = 0;
-            StartCoroutine("DoorSwinging");
+            StartCoroutine(DoorSwinging(0));
         }
         else
         {   // closes door
             joint.targetPosition = 100;
-            StartCoroutine("DoorSwinging");
+            StartCoroutine(DoorSwinging(100));
         }
         hinge.spring = joint;
     }
 
-    IEnumerator DoorSwinging()
+    IEnumerator DoorSwinging(float targetPosition)
     {
         rb.isKinematic = false;
-        yield return new WaitForSeconds(1.5f);
+        while (hinge.angle <= targetPosition-0.5f || hinge.angle >= targetPosition + 0.5f)
+        {
+            Debug.Log("Hinge Angle: " + hinge.angle + " Target Angle: " + targetPosition);
+            yield return new WaitForSeconds(0.1f);
+        }
+        Debug.Log("Reached our target angle");
         rb.isKinematic = true;
     }
 }
