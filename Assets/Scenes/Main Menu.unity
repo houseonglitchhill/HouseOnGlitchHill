@@ -605,6 +605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startButton: {fileID: 1917389092}
   quitButton: {fileID: 1633380156}
+  houseText: {fileID: 376326885}
+  onText: {fileID: 1949013741}
+  hillText: {fileID: 1799446842}
   loadText: {fileID: 255513331}
 --- !u!1 &1395516349
 GameObject:
