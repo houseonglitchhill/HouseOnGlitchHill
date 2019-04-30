@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float minPitch;
 
     [SerializeField]    // so we can see the private field below
-    private bool pickUpKey;
+    private bool hasMasterKeyKey;
 
     private Vector3 jump;
     private Rigidbody rb;
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
         jump = new Vector3(0.0f, 2.0f, 0.0f);
 
         mainCamera = GetComponentInChildren<Camera>();
+
+        hasMasterKeyKey = false;
     }
 
     // Update is called once per frame
@@ -68,5 +70,14 @@ public class PlayerController : MonoBehaviour
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Player - other Collider: " + other.tag);
+        if (other.tag == "Key")
+        {
+            hasMasterKeyKey = true;
+        }
     }
 }
