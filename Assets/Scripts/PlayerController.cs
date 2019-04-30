@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public float maxPitch;
     public float minPitch;
 
+    [SerializeField]    // so we can see the private field below
+    private bool pickUpKey;
+
     private Vector3 jump;
     private Rigidbody rb;
     private float nextJump = 0;
