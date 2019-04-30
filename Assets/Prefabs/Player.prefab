@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114142131311619454}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702517279257966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.0995565, y: 1, z: -1.3179933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4750432896963778}
@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bf10c8059c53c4287fd72b6e29e29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   moveSpeed: 5
   jumpForce: 3
   cameraSpeed: 5

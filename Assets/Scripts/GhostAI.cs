@@ -7,10 +7,7 @@ public class GhostAI : MonoBehaviour
 {
     //References to other objects
     public GameObject Player, OrbOne, OrbTwo, OrbThree;
-    private GhostOrbController orbControllOne, orbControllTwo, orbControllThree;
-
     public Color engagedColor, inactiveColor;
-
     public bool engaging; // Whether Ghost is pursuing player
     public float coolOffTime, closeDistance; //Cooldown timer and how close the ghost should be to the player before disengaging
 
@@ -18,7 +15,7 @@ public class GhostAI : MonoBehaviour
     private NavMeshAgent agent;
     private Transform target;
     private float distanceToTarget, coolOffTimer;
-
+    private GhostOrbController orbControllOne, orbControllTwo, orbControllThree; // References to each orbcontroller script
 
     // Use this for initialization
     void Start()
