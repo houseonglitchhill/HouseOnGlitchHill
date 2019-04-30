@@ -8,12 +8,19 @@ public class MenuController : MonoBehaviour {
     //public Text titleText;
     public Button startButton;
     public Button quitButton;
+    public Text houseText;
+    public Text onText;
+    public Text hillText;
     public Text loadText;
+
+    private int waitSeconds = 3;
 
 	// Use this for initialization
 	void Awake () {
         //set text fields
-        //titleText.text = "House on Glitch Hill";
+        houseText.text = "House";
+        onText.text = "On";
+        hillText.text = "Hill";
         loadText.text = "";
 
         //create on listeners for buttons
@@ -29,7 +36,7 @@ public class MenuController : MonoBehaviour {
 
     IEnumerator LoadScene()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(waitSeconds);
         SceneManager.LoadScene("GlitchHouse");
     }
 
