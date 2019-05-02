@@ -10,6 +10,7 @@ public class GhostAI : MonoBehaviour
     public Color engagedColor, inactiveColor;
     public bool engaging; // Whether Ghost is pursuing player
     public float coolOffTime, closeDistance; //Cooldown timer and how close the ghost should be to the player before disengaging
+    public GhostGltiches glitchList;
 
     //Navmesh agent stuff
     private NavMeshAgent agent;
@@ -75,10 +76,11 @@ public class GhostAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(target.position, transform.position); //Store the distance to the target
 
         //If the ghost has reached the player make it inactive for a peroid
-        if (distanceToTarget < closeDistance)
+        if (distanceToTarget < closeDistance && engaging)
         {
             engaging = false;
             coolOffTimer = 0;
+            glitchList.SelectRandomGlitch();
         }
         if (coolOffTimer > coolOffTime)
         {

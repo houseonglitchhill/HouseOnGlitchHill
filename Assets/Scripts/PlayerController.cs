@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpRate;
     public float maxPitch;
     public float minPitch;
+    public bool reversed;
 
     [SerializeField]    // so we can see the private field below
     private bool hasMasterKeyKey;
@@ -35,8 +36,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float v, h;
+        if (reversed) {
+            v = Input.GetAxis("Horizontal");
+            h = Input.GetAxis("Vertical");
+        } else {
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+        }
 
         Vector3 movement = transform.forward * v * moveSpeed * Time.deltaTime;
         Vector3 sidestep = transform.right * h * moveSpeed * Time.deltaTime;
@@ -55,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            Debug.Log("Interacting");
+            //Debug.Log("Interacting");
             if (hit.collider.tag == "Door" && (Input.GetKeyDown(KeyCode.E)))
             {
                 hit.collider.GetComponent<Door>().OpenOrCloseDoor();
