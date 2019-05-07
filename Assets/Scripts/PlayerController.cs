@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool reversed;
 
     [SerializeField]    // so we can see the private field below
-    private bool hasMasterKeyKey;
+    private bool hasMasterKey;
 
     private Vector3 jump;
     private Rigidbody rb;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
         mainCamera = GetComponentInChildren<Camera>();
 
-        hasMasterKeyKey = false;
+        hasMasterKey = false;
     }
 
     // Update is called once per frame
@@ -90,5 +90,10 @@ public class PlayerController : MonoBehaviour
         {
             gc.GrabKey();
         }
+    }
+
+    public bool HasMasterKey
+    {
+        get; set;
     }
 }
