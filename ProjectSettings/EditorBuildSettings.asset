@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: fbc043b7e375102409022afaaadf3488
   - enabled: 1
+    path: Assets/Scenes/EricScene.unity
+    guid: 9e8ce113bfb93f844bf350b650b4a954
+  - enabled: 0
     path: Assets/Scenes/GlitchHouse.unity
     guid: b4fd17da37e0e7a48ad02fbc6377d0b6
