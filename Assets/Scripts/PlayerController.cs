@@ -22,9 +22,13 @@ public class PlayerController : MonoBehaviour
     private float yaw = -16.0f;
     private float pitch = 0.0f;
 
+    private GameController gc;
+
     // Use this for initialization
     void Start()
     {
+        gc = GameController.FindObjectOfType<GameController>();
+
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
 
@@ -84,7 +88,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player - other Collider: " + other.tag);
         if (other.tag == "Key")
         {
-            hasMasterKeyKey = true;
+            gc.GrabKey();
         }
     }
 }
