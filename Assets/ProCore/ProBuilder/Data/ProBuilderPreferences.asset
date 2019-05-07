@@ -25,13 +25,8 @@ MonoBehaviour:
   - pbCurrentMaterialPalette
   m_Color_keys: []
   m_Material_keys: []
-<<<<<<< HEAD
-  m_Bool_values: 
-  m_Int_values: 00000000000000000100000000000000
-=======
   m_Bool_values: 01
   m_Int_values: 00000000010000000200000000000000
->>>>>>> 3c52e83dd5255e7b0d928d1d06887229b83c7742
   m_Float_values:
   - 0
   - 280
