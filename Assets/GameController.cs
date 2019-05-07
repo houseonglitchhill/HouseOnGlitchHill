@@ -15,8 +15,8 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         SpawnPlayer();
-        SpawnGhost();
         SpawnKey();
+        SpawnGhost();
     }
 
     // Update is called once per frame
