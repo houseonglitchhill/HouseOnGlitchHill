@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float minPitch;
 
     [SerializeField]    // so we can see the private field below
-    private bool hasMasterKeyKey;
+    private bool hasMasterKey;
 
     private Vector3 jump;
     private Rigidbody rb;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         mainCamera = GetComponentInChildren<Camera>();
 
-        hasMasterKeyKey = false;
+        hasMasterKey = false;
     }
 
     // Update is called once per frame
@@ -77,7 +77,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player - other Collider: " + other.tag);
         if (other.tag == "Key")
         {
-            hasMasterKeyKey = true;
+            hasMasterKey = true;
         }
+    }
+
+    public bool HasMasterKey
+    {
+        get; set;
     }
 }
