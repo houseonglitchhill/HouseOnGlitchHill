@@ -10,7 +10,10 @@ public class GhostAI : MonoBehaviour
     public Color engagedColor, inactiveColor;
     public bool engaging; // Whether Ghost is pursuing player
     public float coolOffTime, closeDistance; //Cooldown timer and how close the ghost should be to the player before disengaging
+    public float musicDistance, fadeTime; //how close the ghost should be when ghost music starts playing
     public GhostGltiches glitchList;
+    public AudioClip ghostMusic;
+    public AudioSource audioS;
 
     //Navmesh agent stuff
     private NavMeshAgent agent;
@@ -78,6 +81,7 @@ public class GhostAI : MonoBehaviour
         //If the ghost has reached the player make it inactive for a peroid
         if (distanceToTarget < closeDistance && engaging)
         {
+            Debug.Log("Ghost Close");
             engaging = false;
             coolOffTimer = 0;
             glitchList.SelectRandomGlitch();
@@ -85,6 +89,11 @@ public class GhostAI : MonoBehaviour
         if (coolOffTimer > coolOffTime)
         {
             engaging = true;
+        }
+
+        if(distanceToTarget < musicDistance && !audioS.isPlaying)
+        {
+            audioS.PlayOneShot(ghostMusic);
         }
     }
 }
