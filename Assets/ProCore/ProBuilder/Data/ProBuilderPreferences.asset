@@ -16,7 +16,6 @@ MonoBehaviour:
   - pbDefaultEditLevel
   - pbDefaultSelectionMode
   - pb_GIWorkflowMode
-  - pbMirrorObjectScale
   - pbHandleAlignment
   m_Float_keys:
   - pbEditorScroll.x
@@ -28,7 +27,13 @@ MonoBehaviour:
   m_Int_values: 00000000010000000200000000000000
   m_Float_values:
   - 0
+<<<<<<< HEAD
   - 180
   m_String_values: []
+=======
+  - 0
+  m_String_values:
+  - Assets/ProCore/ProBuilder/Data/Default Material Palette.asset
+>>>>>>> master
   m_Color_values: []
   m_Material_values: []
