@@ -564,7 +564,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 815910636173fec4aa29f762c8bb26b5, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1081,5 +1081,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50537f05b77616f4f9c93af0459ccd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brickWall: {fileID: 0}
+  brickWall: {fileID: 1709694196154404}
   triggers: []
