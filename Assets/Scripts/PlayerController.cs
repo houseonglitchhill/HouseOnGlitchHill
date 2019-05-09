@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+
+        //Pause game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gc.PauseGame();
+        }
     }
 
     void OnTriggerEnter(Collider other)
