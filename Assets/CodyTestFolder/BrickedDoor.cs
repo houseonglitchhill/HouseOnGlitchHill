@@ -5,6 +5,7 @@ using UnityEngine;
 public class BrickedDoor : MonoBehaviour {
 
     [SerializeField] private GameObject brickWall;
+    private AudioSource audioSource;
     public BrickTrigger[] triggers;
     
 
@@ -12,12 +13,14 @@ public class BrickedDoor : MonoBehaviour {
     void Start() {
         brickWall = GameObject.Find("BrickWall");
         brickWall.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
         triggers = GetComponentsInChildren<BrickTrigger>();
     }
 
     public void ActivateBricks()
     {
         brickWall.SetActive(true);
+        audioSource.Play();
         foreach(BrickTrigger trigger in triggers)
         {
             trigger.gameObject.SetActive(false);

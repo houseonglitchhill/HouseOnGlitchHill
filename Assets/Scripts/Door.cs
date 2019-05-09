@@ -11,14 +11,23 @@ public class Door : MonoBehaviour {
     private Rigidbody rb;
     private bool open;
     private PlayerController player;
+    private AudioSource audioSource;
+
+    public AudioClip doorLocked;
+    public AudioClip doorUnlocked;
+    public AudioClip doorOpen;
+    public AudioClip doorClosed;
+    public AudioClip doorCreak;
 
     [SerializeField] private bool locked;
+    private bool brickingDoor = false;
 
 	// Use this for initialization
 	void Start () {
         hinge = GetComponent<HingeJoint>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
 
         hinge.useSpring = true;
         joint = hinge.spring;
@@ -34,13 +43,15 @@ public class Door : MonoBehaviour {
         {
             if (player.HasMasterKey)
             {
-                //Play sound effect to unlock the door.
+                audioSource.clip = doorUnlocked;
+                audioSource.Play();
                 locked = false;
                 player.HasMasterKey = false;
             }
             else
             {
-                //Play sound effect for locked door;
+                audioSource.clip = doorLocked;
+                audioSource.Play();
                 return;
             }
         }
@@ -62,22 +73,38 @@ public class Door : MonoBehaviour {
     IEnumerator DoorSwinging(float targetPosition)
     {
         rb.isKinematic = false;
+        if(targetPosition == 100 && !brickingDoor)
+        {
+            audioSource.clip = doorOpen;
+            audioSource.Play();
+        } else if(targetPosition == 0 && !brickingDoor)
+        {
+            audioSource.clip = doorCreak;
+            audioSource.Play();
+        }
         while (hinge.angle <= targetPosition-0.5f || hinge.angle >= targetPosition + 0.5f)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.02f);
+        }
+        if (targetPosition == 0 && !brickingDoor)
+        {
+            audioSource.clip = doorClosed;
+            audioSource.Play();
         }
         rb.isKinematic = true;
     }
 
     public IEnumerator BrickTheDoor()
     {
-        joint.spring = 16;
-        joint.damper = 5;
+        joint.spring = 45;
+        joint.damper = 2;
+        brickingDoor = true;
         OpenOrCloseDoor();
         while (!rb.isKinematic)
         {
             yield return new WaitForSeconds(0.1f);
         }
+        brickingDoor = false;
         joint.spring = 8;
         joint.damper = 3;
         FindObjectOfType<BrickedDoor>().ActivateBricks();
