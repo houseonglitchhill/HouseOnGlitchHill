@@ -108,7 +108,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -132,3 +132,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dceffa950cb880b428d46b222fcc8aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostPrefab: {fileID: 1916877356636296, guid: 9cb892a8d32d4c147be40efb7de3e600,
+    type: 2}
+  playerPrefab: {fileID: 1702517279257966, guid: 79840ddb3121566438184af15c5883b1,
+    type: 2}
+  keyPrefab: {fileID: 1105004367423812, guid: 6263eec1f5d48b04b916b0562f4b0a74, type: 2}
+  ghostSpawnPoint: {fileID: 0}
+  playerSpawnPoint: {fileID: 0}
+  keySpawns:
+  - {fileID: 0}
+  teleportSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  keyImage: {fileID: 0}

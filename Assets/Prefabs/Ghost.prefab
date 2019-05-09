@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 114722638014048560}
   - component: {fileID: 114000149717510394}
   - component: {fileID: 195679968227325196}
-  - component: {fileID: 114941296489043016}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -410,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1382236f35424ca44842b1a51c0cc45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1702517279257966, guid: 79840ddb3121566438184af15c5883b1, type: 2}
   OrbOne: {fileID: 1529459964563344}
   OrbTwo: {fileID: 1840929483420346}
   OrbThree: {fileID: 1741449977981368}
@@ -442,7 +441,6 @@ MonoBehaviour:
   centerPoint: {fileID: 1860321294636526}
   axis: {x: 0, y: -0.5, z: -0.5}
   baseColor: {r: 0.97794116, g: 0.33077425, b: 0.33077425, a: 0}
-
 --- !u!114 &114722638014048560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,7 +454,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghost: {fileID: 114000149717510394}
   teleports: []
-
   player: {fileID: 1702517279257966, guid: 79840ddb3121566438184af15c5883b1, type: 2}
   effectLength: 0
 --- !u!114 &114948903939020948
