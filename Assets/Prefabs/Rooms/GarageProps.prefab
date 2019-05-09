@@ -978,7 +978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4026309817871024}
   m_Layer: 0
-  m_Name: Props
+  m_Name: GarageProps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
