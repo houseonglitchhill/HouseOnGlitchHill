@@ -152,10 +152,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 23735890350253284, guid: 8a962f348c14f8a4799de5a04c106ea4, type: 2}
-    - {fileID: 23926786748666496, guid: 8a962f348c14f8a4799de5a04c106ea4, type: 2}
-    - {fileID: 23255764940129362, guid: 8a962f348c14f8a4799de5a04c106ea4, type: 2}
+    - target: {fileID: 114733370086374660, guid: 8a962f348c14f8a4799de5a04c106ea4,
+        type: 2}
+      propertyPath: brickWall
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a962f348c14f8a4799de5a04c106ea4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &780389517
