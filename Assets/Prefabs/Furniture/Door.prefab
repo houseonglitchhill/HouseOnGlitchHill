@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 54148067572310026}
   - component: {fileID: 59410169026174112}
   - component: {fileID: 114425999735241202}
+  - component: {fileID: 82009135030040836}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -243,7 +244,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466446011870428}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.473, y: 0, z: 0.021}
+  m_LocalPosition: {x: -0.505, y: 0, z: 0.021}
   m_LocalScale: {x: 0.125, y: 0.20000012, z: 0.12500006}
   m_Children: []
   m_Father: {fileID: 4816353920443802}
@@ -255,8 +256,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225005740885466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 1.5, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7106153, z: 0, w: 0.7035808}
+  m_LocalPosition: {x: -3.4494576, y: 1.555, z: -1.5792599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4718065864891194}
@@ -265,7 +266,7 @@ Transform:
   - {fileID: 4502268322680048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -79.51, z: 0}
 --- !u!4 &4816353920443802
 Transform:
   m_ObjectHideFlags: 1
@@ -343,7 +344,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a3d75a624aaf87b4382ee1341b0b5b0b, type: 2}
+  - {fileID: 2100000, guid: 70ce220ac92c9e440bcaf47e4c75599b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -377,7 +378,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a3d75a624aaf87b4382ee1341b0b5b0b, type: 2}
+  - {fileID: 2100000, guid: 70ce220ac92c9e440bcaf47e4c75599b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -445,7 +446,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a3d75a624aaf87b4382ee1341b0b5b0b, type: 2}
+  - {fileID: 2100000, guid: 70ce220ac92c9e440bcaf47e4c75599b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -513,7 +514,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: dc75c72c1f5ce724f8e54a261c28a8ef, type: 2}
+  - {fileID: 2100000, guid: 328b30239dda01642b7a73c6dd9a851e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -652,7 +653,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.51, y: 0.00033333336, z: 0}
+  m_ConnectedAnchor: {x: -0.51, y: 0.00033333336, z: -0.00000047683716}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -724,6 +725,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82009135030040836
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417999938105120}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243529591985872980, guid: f6cd15ed866fa97448185550ab2738c3,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114425999735241202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -736,3 +818,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 0}
+  doorLocked: {fileID: 8300000, guid: 0b78ea3bebea2964cb4e279941346c2d, type: 3}
+  doorUnlocked: {fileID: 8300000, guid: d77723d4498e36342a946d70d5ec007a, type: 3}
+  doorOpen: {fileID: 8300000, guid: 84b715e4865d6da40a995848d855dc8a, type: 3}
+  doorClosed: {fileID: 8300000, guid: 0d01742094d10a3498c732725ece963e, type: 3}
+  doorCreak: {fileID: 8300000, guid: a42bb99962e26d54c82398f7b5b0dec1, type: 3}
+  locked: 0
