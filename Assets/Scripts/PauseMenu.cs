@@ -17,8 +17,6 @@ public class PauseMenu : MonoBehaviour {
 	void Awake() {
         gc = GameController.FindObjectOfType<GameController>();
 
-        gameObject.SetActive(false);
-
         continueBtn.GetComponent<Button>().onClick.AddListener(delegate { ContinueGame(); } );
         mmBtn.GetComponent<Button>().onClick.AddListener(delegate { MainMenu(); } );
         quitBtn.GetComponent<Button>().onClick.AddListener(delegate { QuitGame(); } );
@@ -35,6 +33,7 @@ public class PauseMenu : MonoBehaviour {
     //Load Main Menu
     void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
 
