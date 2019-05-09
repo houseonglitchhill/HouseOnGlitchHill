@@ -1081,6 +1081,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50537f05b77616f4f9c93af0459ccd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerCollider: {fileID: 0}
   brickWall: {fileID: 1709694196154404}
   triggers: []
