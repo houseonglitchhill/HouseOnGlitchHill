@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour {
         //set key canvas image invisible
         alpha = 0.0f;
         keyImage.CrossFadeAlpha(alpha, 0, true);
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

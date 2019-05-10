@@ -9,6 +9,7 @@ public class GhostGltiches : MonoBehaviour {
     public GameObject player;
     public float effectLength;
     private List<Action> glitches;
+    private Vector3 originalSize;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,8 @@ public class GhostGltiches : MonoBehaviour {
         glitches.Add(TeleportPlayer);
         glitches.Add(ShrinkPlayer);
         glitches.Add(ReverseControls);
+
+        originalSize = new Vector3(1.0f, 1.0f, 1.0f);
     }
 	
 	// Update is called once per frame
@@ -34,7 +37,7 @@ public class GhostGltiches : MonoBehaviour {
 
     private void ShrinkPlayer() {
         Debug.Log("Shrinking Player");
-        StartCoroutine(ShrinkPlayerRevert(player.transform.localScale));
+        StartCoroutine(ShrinkPlayerRevert());
         player.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
     }
 
@@ -49,9 +52,9 @@ public class GhostGltiches : MonoBehaviour {
         player.GetComponent<PlayerController>().reversed = false;
     }
 
-    private IEnumerator ShrinkPlayerRevert(Vector3 orginalSize) {
+    private IEnumerator ShrinkPlayerRevert() {
         yield return new WaitForSeconds(effectLength);
-        player.transform.localScale = orginalSize;
+        player.transform.localScale = originalSize;
     }
 
 
