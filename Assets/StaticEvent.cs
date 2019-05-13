@@ -9,7 +9,7 @@ public class StaticEvent : MonoBehaviour {
 
     private void Start()
     {
-        staticCanvas.SetActive(false);
+        StartCoroutine(playStaticEvent());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +23,6 @@ public class StaticEvent : MonoBehaviour {
 
     IEnumerator playStaticEvent()
     {
-        staticCanvas.SetActive(true);
         yield return new WaitForSeconds(1f);
         staticCanvas.SetActive(false);
     }

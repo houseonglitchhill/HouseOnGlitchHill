@@ -8,8 +8,8 @@ public class WindowsEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        StartCoroutine(playWindowsEvent());
+    }
 
     private void OnTriggerEnter(Collider other)
     {
