@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 33411650301186614}
   - component: {fileID: 65358795676989102}
   - component: {fileID: 23961781274279104}
-  - component: {fileID: 114688646462126276}
   - component: {fileID: 114115142848763098}
   m_Layer: 0
   m_Name: WindowsTrigger
@@ -144,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846616c0cc89ed043baab196e938b914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windowsCanvas: {fileID: 0}
+  windowsCanvas: {fileID: 1905740122541126}
 --- !u!114 &114146606630093924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,19 +186,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &114688646462126276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1900837408241350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81c02f1ebdbea34da97b817cb65474c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  staticCanvas: {fileID: 0}
-  staticAnimation: {fileID: 0}
 --- !u!114 &114770923737653532
 MonoBehaviour:
   m_ObjectHideFlags: 1
