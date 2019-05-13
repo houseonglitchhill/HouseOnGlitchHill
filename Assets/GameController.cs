@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     //canvas elements
     public RawImage keyImage;
     private float alpha;
+    public GameObject pauseMenu;
 
     //hold references to key objects
     private GameObject ghost, player, key;
@@ -30,6 +31,8 @@ public class GameController : MonoBehaviour {
         //set key canvas image invisible
         alpha = 0.0f;
         keyImage.CrossFadeAlpha(alpha, 0, true);
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -60,6 +63,22 @@ public class GameController : MonoBehaviour {
     {
         Debug.Log("Key Grabbed");
         keyGrabbed = true;
+    }
+
+    public void PauseGame()
+    {
+        GetComponent<AudioSource>().Pause();
+        pauseMenu.SetActive(true);
+        Cursor.visible = true;
+        Time.timeScale = 0;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
+    }
+
+    public void ResumeGame()
+    {
+        GetComponent<AudioSource>().Play(); Time.timeScale = 1f;
+        Cursor.visible = false;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = true;
     }
 
     // end of class
