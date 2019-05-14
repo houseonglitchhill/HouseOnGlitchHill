@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Camera mainCamera;
+	public Light flashlight;
     public float moveSpeed;
     public float jumpForce;
     public float cameraSpeed;
@@ -87,6 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             gc.PauseGame();
         }
+
+		//Use flashlight
+		if (Input.GetKeyDown (KeyCode.F)) 
+		{
+			flashlight.enabled = !flashlight.enabled;
+		}
     }
 
     void OnTriggerEnter(Collider other)
