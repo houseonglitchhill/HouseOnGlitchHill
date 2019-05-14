@@ -16,15 +16,19 @@ public class GameController : MonoBehaviour {
 
     //hold references to key objects
     private GameObject ghost, player, key;
+
+    [SerializeField]
     private bool keyGrabbed;
 
-
+    PlayerController pc;
 
     // Use this for initialization
     void Start() {
         SpawnPlayer();
         SpawnKey();
         SpawnGhost();
+
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 
         keyGrabbed = false;
 
@@ -71,15 +75,17 @@ public class GameController : MonoBehaviour {
         pauseMenu.SetActive(true);
         Cursor.visible = true;
         Time.timeScale = 0;
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
+        pc.enabled = false;
     }
 
     public void ResumeGame()
     {
         GetComponent<AudioSource>().Play(); Time.timeScale = 1f;
         Cursor.visible = false;
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = true;
+        pc.enabled = true;
     }
+
+    public bool KeyGrabbed { get; set; }
 
     // end of class
 }

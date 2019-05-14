@@ -10,7 +10,7 @@ public class Door : MonoBehaviour {
     private JointSpring joint;
     private Rigidbody rb;
     private bool open;
-    private PlayerController player;
+    private GameController gc;
     private AudioSource audioSource;
 
     public AudioClip doorLocked;
@@ -26,7 +26,7 @@ public class Door : MonoBehaviour {
 	void Start () {
         hinge = GetComponent<HingeJoint>();
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindObjectOfType<PlayerController>();
+        gc = GameObject.FindObjectOfType<GameController>();
         audioSource = GetComponent<AudioSource>();
 
         hinge.useSpring = true;
@@ -41,12 +41,12 @@ public class Door : MonoBehaviour {
     {
         if (locked)
         {
-            if (player.HasMasterKey)
+            if (gc.KeyGrabbed)
             {
                 audioSource.clip = doorUnlocked;
                 audioSource.Play();
                 locked = false;
-                player.HasMasterKey = false;
+                gc.KeyGrabbed = false;
             }
             else
             {
