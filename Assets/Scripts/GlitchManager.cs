@@ -6,6 +6,7 @@ public class GlitchManager : MonoBehaviour {
     public float intialDelay, interGlitchDelay, intialRandomOffset, interRandomOffset;
     private float intialTimer, nextGlitchTimer, timeToFirstGlitch, timeToNextGlitch;
     private bool bsod, crash, windows, intialStart, firstGlitch;
+    public bool tutorialFinsihed;
 
     private EventBSOD bsodEvent;
     private WindowsEvent windowsEvent;
@@ -18,6 +19,7 @@ public class GlitchManager : MonoBehaviour {
         intialTimer = nextGlitchTimer = 0f;
         timeToFirstGlitch = intialDelay + Random.Range(-intialRandomOffset, intialRandomOffset);
         timeToNextGlitch = 50f;
+        tutorialFinsihed = false;
 
         bsodEvent = FindObjectOfType<EventBSOD>();
         windowsEvent = FindObjectOfType<WindowsEvent>();
@@ -29,21 +31,16 @@ public class GlitchManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(bsod + ", " + crash + ", " + windows);
-            SelectAndTrigger();
-        }
+    void Update() { 
 
-        if (intialStart && !firstGlitch) {
+        if (intialStart && !firstGlitch && tutorialFinsihed) {
             intialTimer += Time.deltaTime;
         }
-        if (intialStart && firstGlitch) {
+        if (intialStart && firstGlitch && tutorialFinsihed) {
             nextGlitchTimer += Time.deltaTime;
         }
 
-        if (intialTimer >= timeToFirstGlitch && !firstGlitch) {
+        if (intialTimer >= timeToFirstGlitch && !firstGlitch && tutorialFinsihed) {
             //Initial Delay over, trigger a glitch
             SelectAndTrigger();
             firstGlitch = true;

@@ -7,6 +7,7 @@ public class BrickedDoor : MonoBehaviour {
     [SerializeField] private GameObject brickWall;
     private AudioSource audioSource;
     public BrickTrigger[] triggers;
+    private GlitchManager glitchManager;
     
 
     // Use this for initialization
@@ -25,6 +26,7 @@ public class BrickedDoor : MonoBehaviour {
         {
             trigger.gameObject.SetActive(false);
         }
+        glitchManager.tutorialFinsihed = true;
     }
 
 }
