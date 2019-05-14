@@ -29,12 +29,7 @@ public class GlitchManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(bsod + ", " + crash + ", " + windows);
-            SelectAndTrigger();
-        }
+    void Update() { 
 
         if (intialStart && !firstGlitch) {
             intialTimer += Time.deltaTime;
