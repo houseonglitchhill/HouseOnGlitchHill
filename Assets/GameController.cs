@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     //prefabs
@@ -11,7 +12,7 @@ public class GameController : MonoBehaviour {
 
     //canvas elements
     public RawImage keyImage;
-    private float alpha;
+    public Text endGameText;
     public GameObject pauseMenu;
 
     //hold references to key objects
@@ -34,9 +35,9 @@ public class GameController : MonoBehaviour {
 
         keyGrabbed = false;
 
-        //set key canvas image invisible
-        alpha = 0.0f;
-        keyImage.CrossFadeAlpha(alpha, 0, true);
+        //set key canvas image and end game text invisible
+        keyImage.CrossFadeAlpha(0.0f, 0, true);
+        endGameText.text = "";
 
         Cursor.visible = false;
     }
@@ -45,12 +46,17 @@ public class GameController : MonoBehaviour {
     void Update() {
         if (keyGrabbed)
         {
-            alpha = 1.0f;
-            keyImage.CrossFadeAlpha(alpha, 1, true);
+            keyImage.CrossFadeAlpha(1.0f, 1, true);
         }
+        else
+        {
+            keyImage.CrossFadeAlpha(0.0f, 0, true);
+        }
+
         if(glitchesActivated >= 15)
         {
             Debug.Log("Game Over");
+            EndGame(false);
             //load game over
         }
     }
@@ -91,6 +97,26 @@ public class GameController : MonoBehaviour {
         GetComponent<AudioSource>().Play(); Time.timeScale = 1f;
         Cursor.visible = false;
         pc.enabled = true;
+    }
+
+    public void EndGame(bool wonGame)
+    {
+        if (wonGame)
+        {
+            Debug.Log("Win Game");
+            endGameText.text = "You've Escaped!";
+        }
+        else
+        {
+            endGameText.text = "You Died...";
+        }
+        StartCoroutine(EndGameWait());
+    }
+
+    IEnumerator EndGameWait()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Main Menu");
     }
 
     public bool KeyGrabbed { get; set; }
