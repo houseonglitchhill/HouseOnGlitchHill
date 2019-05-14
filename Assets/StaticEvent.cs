@@ -7,6 +7,8 @@ public class StaticEvent : MonoBehaviour {
     public GameObject staticCanvas;
     public AudioSource[] allAudioInScene;
 
+    public float timeForEvent = 0.5f;
+
     private void Start()
     {
         staticCanvas.SetActive(false);
@@ -20,7 +22,7 @@ public class StaticEvent : MonoBehaviour {
         }
 
         staticCanvas.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeForEvent);
         staticCanvas.SetActive(false);
 
         foreach (AudioSource audioSource in allAudioInScene)
