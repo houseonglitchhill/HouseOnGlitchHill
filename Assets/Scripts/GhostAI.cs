@@ -63,9 +63,6 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (glitchManager.tutorialFinsihed)
-        {
             agent.SetDestination(target.position); // Sets nav agent target to player position
             distanceToTarget = FindTargetDistance(); //Finds distance to player
             if (!warned)
@@ -148,7 +145,7 @@ public class GhostAI : MonoBehaviour
                 }
                 Cower();
             }
-        }
+        
         //end of Update
     }
     private void Idle() {
