@@ -503,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticCanvas: {fileID: 1588478572186730}
   allAudioInScene: []
+  timeForEvent: 0.5
 --- !u!114 &114154387839113582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -892,7 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f741492c320ecd4691ab26011c34b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillBar: {fileID: 0}
+  fillBar: {fileID: 114759003278505794}
 --- !u!114 &114749593511562888
 MonoBehaviour:
   m_ObjectHideFlags: 1
