@@ -17,6 +17,11 @@ public class Key : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
