@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private bool keyGrabbed;
 
+    public static int glitchesActivated = 0;
+
     PlayerController pc;
 
     // Use this for initialization
@@ -45,6 +47,11 @@ public class GameController : MonoBehaviour {
         {
             alpha = 1.0f;
             keyImage.CrossFadeAlpha(alpha, 1, true);
+        }
+        if(glitchesActivated >= 15)
+        {
+            Debug.Log("Game Over");
+            //load game over
         }
     }
 
