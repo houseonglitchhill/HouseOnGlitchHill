@@ -26,10 +26,10 @@ public class FillBar : MonoBehaviour {
         {
             fillBar.fillAmount = fillBar.fillAmount + 600f * Time.deltaTime;
             Debug.Log(fillBar.fillAmount);
-            yield return new WaitForSeconds(0.00001f);
+            yield return new WaitForSeconds(0.0001f);
         }
 
-        yield return new WaitForSeconds(0.003f);
+        yield return new WaitForSeconds(0.03f);
 
         crashEvent.disableCrashSequence();
     }

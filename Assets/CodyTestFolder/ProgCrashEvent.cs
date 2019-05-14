@@ -12,16 +12,17 @@ public class ProgCrashEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        pc = FindObjectOfType<PlayerController>();
         whiteCanvas.SetActive(false);
         crashWindow.SetActive(false);
 	}
 	
     public IEnumerator TriggerCrashSequence()
     {
-        Time.timeScale = 0.001f;
+        Time.timeScale = 0.01f;
         pc.enabled = false;
         toggleWhiteCanvas();
-        yield return new WaitForSeconds(0.003f);
+        yield return new WaitForSeconds(0.03f);
         StartCoroutine(openCrashWindow());
     }
 
@@ -47,7 +48,7 @@ public class ProgCrashEvent : MonoBehaviour {
     IEnumerator openCrashWindow()
     {
         crashWindow.SetActive(true);
-        yield return new WaitForSeconds(0.003f);
+        yield return new WaitForSeconds(0.02f);
         fillBar.startFixingProcess();
     }
 }
