@@ -540,10 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be21f76798f1a8f4c8b5046bef1cbb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intialDelay: 3
-  interGlitchDelay: 2
-  intialRandomOffset: 0
-  interRandomOffset: 1
+  intialDelay: 40
+  interGlitchDelay: 30
+  intialRandomOffset: 10
+  interRandomOffset: 5
 --- !u!114 &114177844199402190
 MonoBehaviour:
   m_ObjectHideFlags: 1
