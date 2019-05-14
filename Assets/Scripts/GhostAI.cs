@@ -31,6 +31,7 @@ public class GhostAI : MonoBehaviour
     private Transform target;
     private float distanceToTarget, coolOffTimer;
     private GhostOrbController orbControllOne, orbControllTwo, orbControllThree; // References to each orbcontroller script
+    private GlitchManager glitchManager;
 
     // Use this for initialization
     void Start()
@@ -62,77 +63,91 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        agent.SetDestination(target.position); // Sets nav agent target to player position
-        distanceToTarget = FindTargetDistance(); //Finds distance to player
-        if (!warned) {
-            RaycastHit hit;
-            Vector3 f = Player.GetComponent<PlayerController>().mainCamera.transform.forward;
-            if (Physics.SphereCast(Player.transform.position, 2f, f, out hit, 4f)) {
-                if (hit.transform.tag == "Enemy") {
-                    audioS.PlayOneShot(ghostMusic);
-                    warned = true;
+
+        if (glitchManager.tutorialFinsihed)
+        {
+            agent.SetDestination(target.position); // Sets nav agent target to player position
+            distanceToTarget = FindTargetDistance(); //Finds distance to player
+            if (!warned)
+            {
+                RaycastHit hit;
+                Vector3 f = Player.GetComponent<PlayerController>().mainCamera.transform.forward;
+                if (Physics.SphereCast(Player.transform.position, 2f, f, out hit, 4f))
+                {
+                    if (hit.transform.tag == "Enemy")
+                    {
+                        audioS.PlayOneShot(ghostMusic);
+                        warned = true;
+                    }
                 }
             }
-        }
-        //handle moods
-        if (ghostMood == GhostMood.Idle) {
-            if (handOff) {
-                Ghost.transform.position = SpawnRandom();
-                agent.isStopped = true; // Stops the nav agent
-                agent.velocity = Vector3.zero;
-                ChangeOrbColor(Color.white);
-                orbControllOne.SetSpeed("Low");
-                orbControllTwo.SetSpeed("Low");
-                orbControllThree.SetSpeed("Low");
-                handOff = false;
-                coolOffTimer = 0;
+            //handle moods
+            if (ghostMood == GhostMood.Idle)
+            {
+                if (handOff)
+                {
+                    Ghost.transform.position = SpawnRandom();
+                    agent.isStopped = true; // Stops the nav agent
+                    agent.velocity = Vector3.zero;
+                    ChangeOrbColor(Color.white);
+                    orbControllOne.SetSpeed("Low");
+                    orbControllTwo.SetSpeed("Low");
+                    orbControllThree.SetSpeed("Low");
+                    handOff = false;
+                    coolOffTimer = 0;
+                }
+                Idle();
             }
-            Idle();
-        }
-        if (ghostMood == GhostMood.Enraged) {
-            if (handOff) {
-                Ghost.transform.position = SpawnRandom();
-                agent.isStopped = false; // Starts the nav agent
-                ChangeOrbColor(enraged);
-                orbControllOne.SetSpeed("High");
-                orbControllTwo.SetSpeed("High");
-                orbControllThree.SetSpeed("High");
-                handOff = false;
-                nearTarget = false;
-                warned = false;
+            if (ghostMood == GhostMood.Enraged)
+            {
+                if (handOff)
+                {
+                    Ghost.transform.position = SpawnRandom();
+                    agent.isStopped = false; // Starts the nav agent
+                    ChangeOrbColor(enraged);
+                    orbControllOne.SetSpeed("High");
+                    orbControllTwo.SetSpeed("High");
+                    orbControllThree.SetSpeed("High");
+                    handOff = false;
+                    nearTarget = false;
+                    warned = false;
+                }
+                Enraged();
             }
-            Enraged();
-        }
-        if (ghostMood == GhostMood.Search) {
-            if (handOff) {
-                Ghost.transform.position = SpawnRandom();
-                agent.isStopped = false; // Starts the nav agent
-                ChangeOrbColor(search);
-                orbControllOne.SetSpeed("High");
-                orbControllTwo.SetSpeed("High");
-                orbControllThree.SetSpeed("High");
-                lastPostion = target.position;
-                handOff = false;
-                nearTarget = false;
-                warned = false;
+            if (ghostMood == GhostMood.Search)
+            {
+                if (handOff)
+                {
+                    Ghost.transform.position = SpawnRandom();
+                    agent.isStopped = false; // Starts the nav agent
+                    ChangeOrbColor(search);
+                    orbControllOne.SetSpeed("High");
+                    orbControllTwo.SetSpeed("High");
+                    orbControllThree.SetSpeed("High");
+                    lastPostion = target.position;
+                    handOff = false;
+                    nearTarget = false;
+                    warned = false;
+                }
+                Search();
             }
-            Search();
-        }
-        if (ghostMood == GhostMood.Cowardly) {
-            if (handOff) {
-                Ghost.transform.position = SpawnRandom();
-                agent.isStopped = false; // Starts the nav agent
-                ChangeOrbColor(coward);
-                orbControllOne.SetSpeed("High");
-                orbControllTwo.SetSpeed("High");
-                orbControllThree.SetSpeed("High");
-                lastPostion = target.position;
-                handOff = false;
-                nearTarget = false;
-                warned = false;
+            if (ghostMood == GhostMood.Cowardly)
+            {
+                if (handOff)
+                {
+                    Ghost.transform.position = SpawnRandom();
+                    agent.isStopped = false; // Starts the nav agent
+                    ChangeOrbColor(coward);
+                    orbControllOne.SetSpeed("High");
+                    orbControllTwo.SetSpeed("High");
+                    orbControllThree.SetSpeed("High");
+                    lastPostion = target.position;
+                    handOff = false;
+                    nearTarget = false;
+                    warned = false;
+                }
+                Cower();
             }
-            Cower();
         }
         //end of Update
     }
