@@ -12,6 +12,7 @@ public class ProgCrashEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        pc = FindObjectOfType<PlayerController>();
         whiteCanvas.SetActive(false);
         crashWindow.SetActive(false);
 	}
