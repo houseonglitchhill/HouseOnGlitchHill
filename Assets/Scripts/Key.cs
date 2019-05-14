@@ -5,11 +5,12 @@ using UnityEngine;
 public class Key : MonoBehaviour {
     const int oneKey = 1;
     int numInScene;
+    GameController gc;
 
     void Start()
     {
         numInScene = GameObject.FindGameObjectsWithTag("Key").Length;
-
+        gc = FindObjectOfType<GameController>();
         if (numInScene > oneKey)
         {
             // destroy this key if another key already exists
@@ -28,6 +29,7 @@ public class Key : MonoBehaviour {
         {
             Debug.Log("Key set to Inactive");
             this.gameObject.SetActive(false);
+            gc.KeyGrabbed = true;
         }
     }
 }
