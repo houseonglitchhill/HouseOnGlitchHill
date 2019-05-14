@@ -37,7 +37,7 @@ public class MenuController : MonoBehaviour {
     IEnumerator LoadScene()
     {
         yield return new WaitForSecondsRealtime(waitSeconds);
-        SceneManager.LoadScene("EricScene");
+        SceneManager.LoadScene("GlitchHouse");
     }
 
     public void QuitGame()
