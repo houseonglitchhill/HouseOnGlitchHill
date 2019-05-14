@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
     //prefabs
     public GameObject ghostPrefab, playerPrefab, keyPrefab;
-    public Transform ghostSpawnPoint, playerSpawnPoint;
-    public List<Transform> keySpawns, teleportSpots;
+    public Transform playerSpawnPoint;
+    public List<Transform> keySpawns, teleportSpots, ghostSpawnPoints;
 
     //canvas elements
     public RawImage keyImage;
@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour {
 
     [SerializeField]
     private bool keyGrabbed;
+
+    public static int glitchesActivated = 0;
 
     PlayerController pc;
 
@@ -46,11 +48,17 @@ public class GameController : MonoBehaviour {
             alpha = 1.0f;
             keyImage.CrossFadeAlpha(alpha, 1, true);
         }
+        if(glitchesActivated >= 15)
+        {
+            Debug.Log("Game Over");
+            //load game over
+        }
     }
 
     void SpawnGhost() {
-        ghost = Object.Instantiate(ghostPrefab, ghostSpawnPoint.position, Quaternion.identity);
+        ghost = Object.Instantiate(ghostPrefab, ghostSpawnPoints[0].position, Quaternion.identity);
         ghost.GetComponent<GhostAI>().Player = player;
+        ghost.GetComponent<GhostAI>().ghostSpawns = ghostSpawnPoints;
         ghost.GetComponent<GhostGltiches>().player = player;
         ghost.GetComponent<GhostGltiches>().teleports = teleportSpots;
     }
