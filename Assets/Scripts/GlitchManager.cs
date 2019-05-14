@@ -48,11 +48,13 @@ public class GlitchManager : MonoBehaviour {
             SelectAndTrigger();
             firstGlitch = true;
             timeToNextGlitch = interGlitchDelay + Random.Range(-interRandomOffset, interRandomOffset);
+            GameController.glitchesActivated++;
         }
         if (nextGlitchTimer >= timeToNextGlitch) {
             SelectAndTrigger();
             nextGlitchTimer -= timeToNextGlitch;
             timeToNextGlitch = interGlitchDelay + Random.Range(-interRandomOffset, interRandomOffset);
+            GameController.glitchesActivated++;
         }
     }
 
