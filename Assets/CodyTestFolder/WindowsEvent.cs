@@ -8,7 +8,7 @@ public class WindowsEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(playWindowsEvent());
+        windowsCanvas.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,7 +20,7 @@ public class WindowsEvent : MonoBehaviour {
         }
     }
 
-    IEnumerator playWindowsEvent()
+    public IEnumerator playWindowsEvent()
     {
         windowsCanvas.SetActive(true);
         Time.timeScale = 0.01f;

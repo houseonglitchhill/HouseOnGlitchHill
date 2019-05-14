@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GlitchManager : MonoBehaviour {
-    public GameObject bsodEvent, crashEvent, windowsEvent, staticEvent;
     public float intialDelay, interGlitchDelay, intialRandomOffset, interRandomOffset;
     private float intialTimer, nextGlitchTimer, timeToFirstGlitch, timeToNextGlitch;
     private bool bsod, crash, windows, intialStart, firstGlitch;
+
+    private EventBSOD bsodEvent;
+    private WindowsEvent windowsEvent;
+    private ProgCrashEvent crashEvent;
+    private StaticEvent staticEvent;
 
     // Use this for initialization
     void Start() {
@@ -15,12 +19,23 @@ public class GlitchManager : MonoBehaviour {
         timeToFirstGlitch = intialDelay + Random.Range(-intialRandomOffset, intialRandomOffset);
         timeToNextGlitch = 50f;
 
+        bsodEvent = FindObjectOfType<EventBSOD>();
+        windowsEvent = FindObjectOfType<WindowsEvent>();
+        crashEvent = FindObjectOfType<ProgCrashEvent>();
+        staticEvent = FindObjectOfType<StaticEvent>();
+
         //for testing only
         intialStart = true;
     }
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(bsod + ", " + crash + ", " + windows);
+            SelectAndTrigger();
+        }
+
         if (intialStart && !firstGlitch) {
             intialTimer += Time.deltaTime;
         }
@@ -45,13 +60,17 @@ public class GlitchManager : MonoBehaviour {
     private void SelectAndTrigger() {
         Debug.Log("Glitch");
         if (!bsod && !crash && !windows) {
+            Debug.Log("No events activated yet");
             chooseFromFourEvents();
         } else if ((bsod && !crash && !windows) || (!bsod && crash && !windows) || (!bsod && !crash && windows)) {
+            Debug.Log("One event activated");
             chooseFromThreeEvents();
-        } else if((bsod && !crash && windows) || (!bsod && crash && !windows) || (bsod && !crash && !windows)) {
+        } else if((bsod && crash && !windows) || (bsod && !crash && windows) || (!bsod && crash && windows)) {
+            Debug.Log("Two events activated");
             chooseFromTwoEvents();
         } else
         {
+            Debug.Log("All events activated");
             callStaticEvent();
         }
     }
@@ -151,22 +170,29 @@ public class GlitchManager : MonoBehaviour {
     #region EventCalls
     private void callBsodEvent()
     {
+        Debug.Log("Calling BSOD");
         bsod = true;
+        StartCoroutine(bsodEvent.TriggerBSOD());
     }
 
     private void callCrashEvent()
     {
+        Debug.Log("Calling Crash");
         crash = true;
+        StartCoroutine(crashEvent.TriggerCrashSequence());
     }
 
     private void callWindowsEvent()
     {
+        Debug.Log("Calling Windows");
         windows = true;
+        StartCoroutine(windowsEvent.playWindowsEvent());
     }
 
     private void callStaticEvent()
     {
-
+        Debug.Log("Calling Static");
+        StartCoroutine(staticEvent.playStaticEvent());
     }
     #endregion
 

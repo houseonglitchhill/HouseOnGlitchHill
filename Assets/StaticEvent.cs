@@ -5,25 +5,27 @@ using UnityEngine;
 public class StaticEvent : MonoBehaviour {
 
     public GameObject staticCanvas;
-    public Animation staticAnimation;
+    public AudioSource[] allAudioInScene;
 
     private void Start()
     {
-        StartCoroutine(playStaticEvent());
+        staticCanvas.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public IEnumerator playStaticEvent()
     {
-        if(other.gameObject.tag == "Player")
+        foreach (AudioSource audioSource in allAudioInScene)
         {
-            staticCanvas.SetActive(true);
-            StartCoroutine(playStaticEvent());
+            audioSource.enabled = !audioSource.enabled;
         }
-    }
 
-    IEnumerator playStaticEvent()
-    {
+        staticCanvas.SetActive(true);
         yield return new WaitForSeconds(1f);
         staticCanvas.SetActive(false);
+
+        foreach (AudioSource audioSource in allAudioInScene)
+        {
+            audioSource.enabled = !audioSource.enabled;
+        }
     }
 }

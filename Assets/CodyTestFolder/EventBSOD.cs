@@ -11,24 +11,23 @@ public class EventBSOD : MonoBehaviour
 
     private void Start()
     {
+        bsod = GetComponent<Canvas>();
         bsod.enabled = false;
     }
 
-    IEnumerator TriggerBSOD()
+    public IEnumerator TriggerBSOD()
     {
-        
         toggleBSOD();
         Time.timeScale = 0.01f;
         yield return new WaitForSeconds(0.05f);
         toggleBSOD();
         Time.timeScale = 1f;
-        this.gameObject.SetActive(false);
     }
 
     private void toggleBSOD()
     {
-        //bsod.enabled = !bsod.enabled;
-        playerUI.enabled = !playerUI.enabled;
+        bsod.enabled = !bsod.enabled;
+        //playerUI.enabled = !playerUI.enabled;
 
         foreach (AudioSource audioSource in allAudioInScene)
         {
@@ -38,8 +37,6 @@ public class EventBSOD : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger activated");
-
         if(other.gameObject.name == "Player")
         {
             Debug.Log("Player Detected");
