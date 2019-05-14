@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
     //prefabs
     public GameObject ghostPrefab, playerPrefab, keyPrefab;
-    public Transform ghostSpawnPoint, playerSpawnPoint;
-    public List<Transform> keySpawns, teleportSpots;
+    public Transform playerSpawnPoint;
+    public List<Transform> keySpawns, teleportSpots, ghostSpawnPoints;
 
     //canvas elements
     public RawImage keyImage;
@@ -49,8 +49,9 @@ public class GameController : MonoBehaviour {
     }
 
     void SpawnGhost() {
-        ghost = Object.Instantiate(ghostPrefab, ghostSpawnPoint.position, Quaternion.identity);
+        ghost = Object.Instantiate(ghostPrefab, ghostSpawnPoints[0].position, Quaternion.identity);
         ghost.GetComponent<GhostAI>().Player = player;
+        ghost.GetComponent<GhostAI>().ghostSpawns = ghostSpawnPoints;
         ghost.GetComponent<GhostGltiches>().player = player;
         ghost.GetComponent<GhostGltiches>().teleports = teleportSpots;
     }
