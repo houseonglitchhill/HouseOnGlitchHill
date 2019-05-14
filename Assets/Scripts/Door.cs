@@ -41,6 +41,7 @@ public class Door : MonoBehaviour {
     {
         if (locked)
         {
+            Debug.Log(gc.KeyGrabbed);
             if (gc.KeyGrabbed)
             {
                 audioSource.clip = doorUnlocked;

@@ -29,12 +29,7 @@ public class GlitchManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(bsod + ", " + crash + ", " + windows);
-            SelectAndTrigger();
-        }
+    void Update() { 
 
         if (intialStart && !firstGlitch) {
             intialTimer += Time.deltaTime;
@@ -48,11 +43,13 @@ public class GlitchManager : MonoBehaviour {
             SelectAndTrigger();
             firstGlitch = true;
             timeToNextGlitch = interGlitchDelay + Random.Range(-interRandomOffset, interRandomOffset);
+            GameController.glitchesActivated++;
         }
         if (nextGlitchTimer >= timeToNextGlitch) {
             SelectAndTrigger();
             nextGlitchTimer -= timeToNextGlitch;
             timeToNextGlitch = interGlitchDelay + Random.Range(-interRandomOffset, interRandomOffset);
+            GameController.glitchesActivated++;
         }
     }
 
@@ -173,7 +170,6 @@ public class GlitchManager : MonoBehaviour {
         Debug.Log("Calling BSOD");
         bsod = true;
         StartCoroutine(bsodEvent.TriggerBSOD());
-        GameController.glitchesActivated++;
     }
 
     private void callCrashEvent()
@@ -181,7 +177,6 @@ public class GlitchManager : MonoBehaviour {
         Debug.Log("Calling Crash");
         crash = true;
         StartCoroutine(crashEvent.TriggerCrashSequence());
-        GameController.glitchesActivated++;
     }
 
     private void callWindowsEvent()
@@ -189,14 +184,12 @@ public class GlitchManager : MonoBehaviour {
         Debug.Log("Calling Windows");
         windows = true;
         StartCoroutine(windowsEvent.playWindowsEvent());
-        GameController.glitchesActivated++;
     }
 
     private void callStaticEvent()
     {
         Debug.Log("Calling Static");
         StartCoroutine(staticEvent.playStaticEvent());
-        GameController.glitchesActivated++;
     }
     #endregion
 
