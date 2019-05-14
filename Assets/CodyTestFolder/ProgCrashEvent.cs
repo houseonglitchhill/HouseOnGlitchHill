@@ -10,13 +10,22 @@ public class ProgCrashEvent : MonoBehaviour {
     public AudioSource[] allAudioInScene;
     private PlayerController pc;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         pc = FindObjectOfType<PlayerController>();
         whiteCanvas.SetActive(false);
         crashWindow.SetActive(false);
-	}
-	
+    }
+
+    private void Update()
+    {
+        if(pc == null)
+        {
+            pc = FindObjectOfType<PlayerController>();
+        }
+    }
+
     public IEnumerator TriggerCrashSequence()
     {
         Time.timeScale = 0.01f;
