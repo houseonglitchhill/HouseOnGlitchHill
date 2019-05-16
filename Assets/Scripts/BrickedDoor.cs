@@ -7,7 +7,7 @@ public class BrickedDoor : MonoBehaviour {
     [SerializeField] private GameObject brickWall;
     private AudioSource audioSource;
     public BrickTrigger[] triggers;
-    private GlitchManager glitchManager;
+    private GameController gc;
     
 
     // Use this for initialization
@@ -16,6 +16,8 @@ public class BrickedDoor : MonoBehaviour {
         brickWall.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         triggers = GetComponentsInChildren<BrickTrigger>();
+
+        gc = FindObjectOfType<GameController>();
     }
 
     public void ActivateBricks()
@@ -26,7 +28,7 @@ public class BrickedDoor : MonoBehaviour {
         {
             trigger.gameObject.SetActive(false);
         }
-        glitchManager.tutorialFinsihed = true;
+        gc.TutorialFinished = true;
     }
 
 }

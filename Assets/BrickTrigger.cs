@@ -10,6 +10,7 @@ public class BrickTrigger : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" && door.getOpen())
         {
+            Debug.Log("Briiiickk");
             StartCoroutine(door.BrickTheDoor());
         }
     }

@@ -33,9 +33,13 @@ public class GhostAI : MonoBehaviour
     private GhostOrbController orbControllOne, orbControllTwo, orbControllThree; // References to each orbcontroller script
     private GlitchManager glitchManager;
 
+    private GameController gc;
+
     // Use this for initialization
     void Start()
     {
+        gc = FindObjectOfType<GameController>();
+
         Ghost = this.gameObject;
         // Get a reference to the player object
         if (Player == null)
@@ -63,6 +67,8 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gc.TutorialFinished)
+        {
             agent.SetDestination(target.position); // Sets nav agent target to player position
             distanceToTarget = FindTargetDistance(); //Finds distance to player
             if (!warned)
@@ -145,9 +151,10 @@ public class GhostAI : MonoBehaviour
                 }
                 Cower();
             }
-        
+        }
         //end of Update
     }
+
     private void Idle() {
         coolOffTimer += Time.deltaTime;
         if (coolOffTimer > coolOffTime) {
@@ -156,6 +163,7 @@ public class GhostAI : MonoBehaviour
             handOff = true;
         }
     }
+
     private void Enraged() {
         if (distanceToTarget < closeDistance * 4) {
             nearTarget = true;
@@ -178,6 +186,7 @@ public class GhostAI : MonoBehaviour
             handOff = true;
         }
     }
+
     private void Search() {
         if (distanceToTarget < closeDistance * 2.5 && !nearTarget) {
             nearTarget = true;
@@ -201,6 +210,7 @@ public class GhostAI : MonoBehaviour
             }
         }
     }
+
     private void Cower() {
         if (Player.GetComponent<PlayerController>().flashlight.enabled) {
             RaycastHit hit;
@@ -225,6 +235,7 @@ public class GhostAI : MonoBehaviour
                 handOff = true;
         }
     }
+
     private GhostMood FindMood() {
         int roll = Random.Range(0, 3);
         if(roll == 0) {
