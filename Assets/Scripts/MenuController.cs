@@ -26,6 +26,8 @@ public class MenuController : MonoBehaviour {
         //create on listeners for buttons
         startButton.onClick.AddListener(delegate { StartGame(); });
         quitButton.onClick.AddListener(delegate { QuitGame(); });
+
+        Cursor.visible = true;
 	}
 	
     public void StartGame()

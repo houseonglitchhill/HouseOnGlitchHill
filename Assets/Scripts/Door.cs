@@ -109,6 +109,8 @@ public class Door : MonoBehaviour {
         joint.spring = 8;
         joint.damper = 3;
         FindObjectOfType<BrickedDoor>().ActivateBricks();
+
+        gc.TutorialFinished = true;
     }
 
     public bool getOpen()

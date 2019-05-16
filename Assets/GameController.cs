@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private bool keyGrabbed;
 
+    [SerializeField]
+    private bool tutorialFinished;
+
     public static int glitchesActivated = 0;
 
     PlayerController pc;
@@ -34,6 +37,7 @@ public class GameController : MonoBehaviour {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 
         keyGrabbed = false;
+        tutorialFinished = false;
 
         //set key canvas image and end game text invisible
         keyImage.CrossFadeAlpha(0.0f, 0, true);
@@ -120,6 +124,8 @@ public class GameController : MonoBehaviour {
     }
 
     public bool KeyGrabbed { get; set; }
+
+    public bool TutorialFinished { get; set; }
 
     // end of class
 }
